@@ -1,0 +1,173 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" 
+                controller="MappingController"
+                access="global">
+
+    <!-- handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <!-- attributes -->
+    <aura:attribute name="options" type="List" default="[
+    {'label': 'New', 'value': 'new'},
+    {'label': 'In Progress', 'value': 'inProgress'},
+    {'label': 'Finished', 'value': 'finished'},
+    ]"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <div></div>
+
+    <lightning:card>
+        <aura:set attribute="title">
+                <lightning:icon iconName="standard:data_mapping" size="large"/>
+                <div class="title-main">
+                    <p>동호회</p>
+                    <p>직원 - 동호회 매핑</p>
+                </div>
+        </aura:set>
+        <aura:set attribute="actions">
+            <!-- Dynamically use save and search icon variables  -->
+            <lightning:button class="mapping-report header-right" label="매핑 보고서" iconName="utility:freeze_column" iconPosition="left"  variant="brand-outline" />
+            <lightning:button class="save-search-btn header-right" label="검색" iconName="utility:search" iconPosition="left"  variant="inverse" />
+            <div class="slds-form-element toggle header-right">
+                <label class="slds-checkbox_toggle slds-grid">
+                  <span class="slds-form-element__label slds-m-bottom_none">편집모드</span>
+                  <input type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" checked="" />
+                  <span id="checkbox-toggle-16" class="slds-checkbox_faux_container" aria-live="assertive">
+                    <span class="slds-checkbox_faux"></span>
+                  </span>
+                </label>
+              </div>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            <lightning:combobox class="combobox-search" label="대분류" value="대분류를 선택 해주세요." placeholder="Select Progress" options="{! v.options }" onchange="{! c.handleChange }"/>
+            <div class="slds-form-element input-text">
+              <label class="slds-form-element__label" for="text-input-id-47">
+                <abbr class="slds-required" title="required"></abbr>동호회</label>
+              <div class="slds-form-element__control">
+                <input type="text" id="text-input-id-46" placeholder="동호회명 입력..." required="" class="slds-input" />
+              </div>
+            </div>
+            <div class="slds-form-element input-text">
+              <label class="slds-form-element__label" for="text-input-id-47">
+                <abbr class="slds-required" title="required"></abbr>직원</label>
+              <div class="slds-form-element__control">
+                <input type="text" id="text-input-id-47" placeholder="직원명 입력..." required="" class="slds-input" />
+              </div>
+              <p class="depend">동호회에 종속 됨</p>
+            </div>
+        </p>
+    </lightning:card>
+    <div class="table-area" style="background-color: rgb(252, 252, 252); border-radius: 0.4rem;">
+      <div class="table-header">
+        <p class="table-title">검색결과</p>
+        <div class="cnt-table-row">
+          <lightning:icon class="table-icon" iconName="utility:list" size="small" iconPosition="left"/><p class="row-cnt">18</p>
+        </div>
+      </div>
+      <table class="table-mana">
+        <tr>
+          <th>NO</th>
+          <th>회사 동호회</th>
+          <th>직원-동호회 매핑</th>
+          <th>직원</th>
+          <th>선택</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <div class="slds-form-element">
+            <div class="slds-form-element__control">
+              <div class="slds-checkbox">
+                <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81" checked="" />
+                <label class="slds-checkbox__label" for="checkbox-unique-id-81">
+                  <span class="slds-checkbox_faux"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Centro comercial Moctezuma</td>
+          <td>Francisco Chang</td>
+          <td>Mexico</td>
+          <div class="slds-form-element">
+            <div class="slds-form-element__control">
+              <div class="slds-checkbox">
+                <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81" checked="" />
+                <label class="slds-checkbox__label" for="checkbox-unique-id-81">
+                  <span class="slds-checkbox_faux"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Roland Mendel</td>
+          <td>Roland Mendel</td>
+          <td>Austria</td>
+          <div class="slds-form-element">
+            <div class="slds-form-element__control">
+              <div class="slds-checkbox">
+                <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81" checked="" />
+                <label class="slds-checkbox__label" for="checkbox-unique-id-81">
+                  <span class="slds-checkbox_faux"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Helen Bennett</td>
+          <td>Helen Bennett</td>
+          <td>UK</td>
+          <div class="slds-form-element">
+            <div class="slds-form-element__control">
+              <div class="slds-checkbox">
+                <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81" checked="" />
+                <label class="slds-checkbox__label" for="checkbox-unique-id-81">
+                  <span class="slds-checkbox_faux"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Laughing Bacchus Winecellars</td>
+          <td>Yoshi Tannamuri</td>
+          <td>Canada</td>
+          <div class="slds-form-element">
+            <div class="slds-form-element__control">
+              <div class="slds-checkbox">
+                <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81" checked="" />
+                <label class="slds-checkbox__label" for="checkbox-unique-id-81">
+                  <span class="slds-checkbox_faux"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Magazzini Alimentari Riuniti</td>
+          <td>Giovanni Rovelli</td>
+          <td>Italy</td>
+          <div class="slds-form-element">
+            <div class="slds-form-element__control">
+              <div class="slds-checkbox">
+                <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81" checked="" />
+                <label class="slds-checkbox__label" for="checkbox-unique-id-81">
+                  <span class="slds-checkbox_faux"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </tr>
+      </table>
+    </div>
+</aura:component>

@@ -1,0 +1,27 @@
+.THIS {
+}
+
+/* header */
+.THIS .title-main {display: inline-grid;padding-left: 1rem;}
+.THIS .header-right {padding-left: 0.5rem;}
+.THIS .save-search-btn {background-color: #122c5f;}
+.THIS .toggle {display: inline-block;}
+
+/* combobox */
+.THIS .combobox-search {display: inline-block; width: 30rem;padding-right: 1rem;}
+/* input filed */
+.THIS .input-text{display: inline-block; width: 30rem; padding-right: 1rem;}
+.THIS p.depend {font-size: 10px;color: #5D89B3;margin-top: 2px; display: table;}
+.THIS p.depend::before {content: "🔗 \00a0 \00a0"}
+
+/* table */
+.THIS table {font-family: arial, sans-serif;border-collapse: collapse;width: 100%;}
+.THIS td, .THIS th {border: 1px solid #dddddd;text-align: left;padding: 8px;}
+.THIS tr:nth-child(even) {background-color: #dddddd;}
+
+.THIS .table-header {margin-top: 1rem;margin-bottom: 0.5rem;}
+.THIS .table-title {display: inline-block;font-weight: bold;font-size: 1rem;}
+.THIS .table-icon {margin-left: 0.3rem;}
+.THIS .cnt-table-row{display: inline-block;border-radius: 0.6rem;background-color: rgb(235 235 235);float: right;width: 3rem;}
+.THIS .row-cnt {display: inline-block;font-weight: bolder;}
+.THIS .table-mana, .THIS .table-mana th, .THIS .table-mana td{text-align: center;}

@@ -1,0 +1,53 @@
+<template>
+    <div class="wrap">
+        <div class="main">
+            <div class="header">
+                <p class="header-title">Contact Us</p>
+                <p>For general business inquiries, please contact your Sales Representatives</p>
+            </div>
+            <div class="content">
+                <span class="title">Category<p class="required">*</p></span>
+                <template if:true={categoryList}>
+                    <lightning-combobox
+                        name="progress"
+                        value={category}
+                        placeholder="Select Category"
+                        options={categoryList}
+                        onchange={handleCategory} 
+                        class="category combo-box harf minus-margin-top ilgyu"></lightning-combobox>
+                </template>
+
+                <span class="title space">Inquiry Form</span>
+                <span class="sub-title sub-space">your Email<p class="required">*</p></span>
+                <lightning-input type="text" class="email harf minus-margin-top ilgyu" placeholder="Please write your email" onchange={setEmail}></lightning-input>
+
+                <span class="sub-title sub-space">Subject<p class="required">*</p></span>
+                <lightning-input type="text" class="subject minus-margin-top" placeholder="Please write the subject" onchange={setSubject}></lightning-input>
+
+                <span class="sub-title sub-space">Description<p class="required">*</p></span>
+                <lightning-textarea class="description minus-margin-top gyuil" maxlength="1000" placeholder="Please write the subject" onchange={setDescription}></lightning-textarea>
+
+                <span class="sub-title sub-space">Colaborators</span>
+                <lightning-input type="text" class="cc-email harf minus-margin-top" placeholder="Add CC email 'Enter key'" onkeypress={setCCEmail}></lightning-input>
+                <template if:true={emailMessage}><p class="validation-message">{emailMessage}</p></template>
+                <template iterator:it={emailItem}>
+                    <lightning-pill key={it.value} label={it.value} onremove={handlePillRemove}></lightning-pill>
+                </template>
+                <lightning-file-upload
+                    accept={acceptedFormats}
+                    name="Attachment"
+                    class="file-selector-large file-upload gyuil"
+                    label="Attachment"
+                    onuploadfinished={handleUploadFinished}
+                    multiple></lightning-file-upload>
+                    <template iterator:it={files}>
+                        <lightning-pill key={it.value.name} label={it.value.name} onremove={handleFileRemove}></lightning-pill>
+                    </template>
+                <div class="btn-wrap">
+                    <button class="submit-btn" onclick={doSubmit}>Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <c-util-toast></c-util-toast>
+</template>

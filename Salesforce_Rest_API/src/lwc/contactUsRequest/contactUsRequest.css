@@ -1,0 +1,20 @@
+.wrap{justify-content: center; display: flex;}
+.main{width: 60rem;height: 100%;padding: 2rem 3rem;background: white; border-radius: 0.5rem;}
+.content{padding: 2rem;border: 1px solid #bdbcbc;}
+.header{}
+
+/* util */
+.header{padding-bottom: 1rem;}
+.header-title{font-size: 1.5rem;}
+.title{font-size: 1rem;display: block;font-weight: bold;}
+.sub-title{padding-top: 1.5rem;display: block;}
+.required{color: red;}
+.space{padding-top: 3rem;}
+.minus-margin-top{margin-top: -1rem;}
+.harf{width: 50%;}
+
+/* filed */
+.Description{--sds-c-textarea-sizing-min-height:10rem;}
+.file-upload{padding-top: 2rem;display: block;}
+.btn-wrap{padding-top: 5rem;text-align: center;}
+.submit-btn{background: #3e3e6d;width: 9rem;height: 3rem;font-size: 1.3rem;color: white;border-radius: 0.4rem;}
